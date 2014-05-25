@@ -19,6 +19,64 @@
 !function(a){function f(a,b){if(!(a.originalEvent.touches.length>1)){a.preventDefault();var c=a.originalEvent.changedTouches[0],d=document.createEvent("MouseEvents");d.initMouseEvent(b,!0,!0,window,1,c.screenX,c.screenY,c.clientX,c.clientY,!1,!1,!1,!1,0,null),a.target.dispatchEvent(d)}}if(a.support.touch="ontouchend"in document,a.support.touch){var e,b=a.ui.mouse.prototype,c=b._mouseInit,d=b._mouseDestroy;b._touchStart=function(a){var b=this;!e&&b._mouseCapture(a.originalEvent.changedTouches[0])&&(e=!0,b._touchMoved=!1,f(a,"mouseover"),f(a,"mousemove"),f(a,"mousedown"))},b._touchMove=function(a){e&&(this._touchMoved=!0,f(a,"mousemove"))},b._touchEnd=function(a){e&&(f(a,"mouseup"),f(a,"mouseout"),this._touchMoved||f(a,"click"),e=!1)},b._mouseInit=function(){var b=this;b.element.bind({touchstart:a.proxy(b,"_touchStart"),touchmove:a.proxy(b,"_touchMove"),touchend:a.proxy(b,"_touchEnd")}),c.call(b)},b._mouseDestroy=function(){var b=this;b.element.unbind({touchstart:a.proxy(b,"_touchStart"),touchmove:a.proxy(b,"_touchMove"),touchend:a.proxy(b,"_touchEnd")}),d.call(b)}}}(jQuery);
 </script>
 
+<style>
+
+body {
+    margin:50px;
+}
+
+.tooltip {
+    position: absolute;
+    z-index: 1020;
+    display: block;
+    padding: 5px;
+    font-size: 15px;
+    visibility: visible;
+    margin-top: -2px;
+    bottom:120%;
+    margin-left: -2em;
+	width:60px;
+}
+
+.tooltip .tooltip-arrow {
+    bottom: 0;
+    left: 50%;
+    margin-left: -5px;
+    border-top: 5px solid #000000;
+    border-right: 5px solid transparent;
+    border-left: 5px solid transparent;
+    position: absolute;
+    width: 0;
+    height: 0;
+}
+
+.tooltip-inner {
+    max-width: 200px;
+    padding: 3px 8px;
+    color: #ffffff;
+    text-align: center;
+    text-decoration: none;
+    background-color: #000000;
+    -webkit-border-radius: 4px;
+       -moz-border-radius: 4px;
+            border-radius: 4px;
+}
+
+#slider .ui-slider-handle {
+    background: #ED6B51;
+    border-bottom: 1px solid #a8a79f;
+    border-right: 1px solid #a8a79f;
+    height: 20px;
+    width: 10px;
+    margin: 0;
+    padding: 0px;
+    display: inline-block;
+}
+
+
+</style>
+
+
 </head>
 <body>
  
@@ -30,12 +88,26 @@
 </html>
 <script>
 window.onload = function(){
+	
+	
+	
+	
+	
 	var count = 0;
+	var initialValue=1;
 	$( "#q188_1" ).prop( "readonly", true );
 	if( $("#q188_1").val() == null ) { $('#q188_1').val(1); }
 	
+	var sliderTooltip = function(event, ui) {
+    var curValue = ui.value || initialValue;
+    var tooltip = '<div class="tooltip"><div class="tooltip-inner">' + curValue + '</div><div class="tooltip-arrow"></div></div>';
+
+    $('.ui-slider-handle').html(tooltip);
+
+}
+	
 	$(function() {
-	$( "#slider" ).slider({ min: 1, max: 5, value: $("#q188_1").val(), step: 0.25 });
+	$( "#slider" ).slider({ min: 1, max: 5, value: $("#q188_1").val(), step: 0.25, create: sliderTooltip, slide: sliderTooltip });
 	});
 	
 	$("#slider").on("slidestop", function(event, ui) {
