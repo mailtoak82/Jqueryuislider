@@ -21,10 +21,6 @@
 
 <style>
 
-body {
-    margin:50px;
-}
-
 .tooltip {
     position: absolute;
     z-index: 1020;
@@ -88,10 +84,9 @@ body {
 </html>
 <script>
 window.onload = function(){
-	
-	
-	
-	
+
+ $( "#q188_1").hide();
+ $( "#q188_1_label").hide();
 	
 	var count = 0;
 	var initialValue=1;
@@ -99,8 +94,8 @@ window.onload = function(){
 	if( $("#q188_1").val() == null ) { $('#q188_1').val(1); }
 	
 	var sliderTooltip = function(event, ui) {
-    var curValue = ui.value || initialValue;
-    var tooltip = '<div class="tooltip"><div class="tooltip-inner">' + curValue + '</div><div class="tooltip-arrow"></div></div>';
+        var curValue = ui.value || initialValue;
+        var tooltip = '<div class="tooltip"><div class="tooltip-inner">' + curValue + '</div><div class="tooltip-arrow"></div></div>';
 
     $('.ui-slider-handle').html(tooltip);
 
@@ -111,8 +106,9 @@ window.onload = function(){
 	});
 	
 	$("#slider").on("slidestop", function(event, ui) {
-        var value = $( "#slider" ).slider( "option", "value" );
-		$('#q188_1').val(value);
+        var value = $( "#slider" ).slider( "option", "value");
+	$('#q188_1').val(value);
+		  
     });
 	
 	
@@ -124,7 +120,10 @@ window.onload = function(){
 		if($('#q159_3_1').is(':checked')) { count += 1; }
 		if($('#q159_4_1').is(':checked')) { count += 1; }
 		$('#q188_1').val(count);
-		$( "#slider" ).slider( "option", "value", count );
+		$( "#slider" ).slider( "option", "value", count);
+                var tooltip = '<div class="tooltip"><div class="tooltip-inner">' + count + '</div><div class="tooltip-arrow"></div></div>';
+                $('.ui-slider-handle').html(tooltip);
+                
 	});
 	$('#q159_2_1').parent().click(function() {
 		count = 1;
@@ -134,7 +133,9 @@ window.onload = function(){
 		if($('#q159_3_1').is(':checked')) { count += 1; }
 		if($('#q159_4_1').is(':checked')) { count += 1; }
 		$('#q188_1').val(count);
-		$( "#slider" ).slider( "option", "value", count );
+		$( "#slider" ).slider( "option", "value", count);
+                var tooltip = '<div class="tooltip"><div class="tooltip-inner">' + count + '</div><div class="tooltip-arrow"></div></div>';
+                $('.ui-slider-handle').html(tooltip);
 	});
 	$('#q159_3_1').parent().click(function() {
 		count = 1;
@@ -145,6 +146,8 @@ window.onload = function(){
 		if($('#q159_4_1').is(':checked')) { count += 1; }
 		$('#q188_1').val(count);
 		$( "#slider" ).slider( "option", "value", count );
+                var tooltip = '<div class="tooltip"><div class="tooltip-inner">' + count + '</div><div class="tooltip-arrow"></div></div>';
+                $('.ui-slider-handle').html(tooltip);
 	});
 	$('#q159_4_1').parent().click(function() {
 		count = 1;
@@ -154,7 +157,9 @@ window.onload = function(){
 		if($('#q159_3_1').is(':checked')) { count += 1; }
 		if($('#q159_4_1').is(':checked')) { count += 1; }
 		$('#q188_1').val(count);
-		$( "#slider" ).slider( "option", "value", count );
+		$( "#slider" ).slider( "option", "value", count);
+                var tooltip = '<div class="tooltip"><div class="tooltip-inner">' + count + '</div><div class="tooltip-arrow"></div></div>';
+                $('.ui-slider-handle').html(tooltip);
 	});
 	
 	$('#q159_1_2').parent().click(function() {
@@ -165,7 +170,9 @@ window.onload = function(){
 		if($('#q159_3_1').is(':checked')) { count += 1; }
 		if($('#q159_4_1').is(':checked')) { count += 1; }
 		$('#q188_1').val(count);
-		$( "#slider" ).slider( "option", "value", count );
+		$( "#slider" ).slider( "option", "value", count);
+                var tooltip = '<div class="tooltip"><div class="tooltip-inner">' + count + '</div><div class="tooltip-arrow"></div></div>';
+                $('.ui-slider-handle').html(tooltip);
 	});
 	$('#q159_2_2').parent().click(function() {
 		count = 1;
@@ -176,6 +183,8 @@ window.onload = function(){
 		if($('#q159_4_1').is(':checked')) { count += 1; }
 		$('#q188_1').val(count);
 		$( "#slider" ).slider( "option", "value", count );
+                var tooltip = '<div class="tooltip"><div class="tooltip-inner">' + count + '</div><div class="tooltip-arrow"></div></div>';
+                $('.ui-slider-handle').html(tooltip);  
 	});
 	$('#q159_3_2').parent().click(function() {
 		count = 1;
@@ -185,7 +194,9 @@ window.onload = function(){
 		if($('#q159_3_1').is(':checked')) { count += 1; }
 		if($('#q159_4_1').is(':checked')) { count += 1; }
 		$('#q188_1').val(count);
-		$( "#slider" ).slider( "option", "value", count );
+		$( "#slider" ).slider( "option", "value", count);
+                var tooltip = '<div class="tooltip"><div class="tooltip-inner">' + count + '</div><div class="tooltip-arrow"></div></div>';
+                $('.ui-slider-handle').html(tooltip);
 	});
 	$('#q159_4_2').parent().click(function() {
 		count = 1;
@@ -195,7 +206,9 @@ window.onload = function(){
 		if($('#q159_3_1').is(':checked')) { count += 1; }
 		if($('#q159_4_1').is(':checked')) { count += 1; }
 		$('#q188_1').val(count);
-		$( "#slider" ).slider( "option", "value", count );
+		$( "#slider" ).slider( "option", "value", count);
+                var tooltip = '<div class="tooltip"><div class="tooltip-inner">' + count + '</div><div class="tooltip-arrow"></div></div>';
+                $('.ui-slider-handle').html(tooltip);
 	});
 }
 
